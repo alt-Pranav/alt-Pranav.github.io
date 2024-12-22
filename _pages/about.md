@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Pranav Bhagwat: Curious, opinionated, receptive."
+title: "Pranav Bhagwat: AI with HCI"
 author_profile: true
 redirect_from: 
   - /about/
