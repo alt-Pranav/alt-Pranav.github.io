@@ -5,6 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pranav Bhagwat</title>
   <meta name="description" content="Pranav Bhagwat, ML and software engineer working on computer vision, LLM systems, and production infrastructure.">
+  <link rel="canonical" href="https://alt-pranav.github.io/">
+
+  <!-- Link previews (Slack, LinkedIn, iMessage, X). Crawlers don't run JS, so every ?for= link shares this preview. -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alt-pranav.github.io/">
+  <meta property="og:site_name" content="Pranav Bhagwat">
+  <meta property="og:title" content="Pranav Bhagwat, ML and software engineer">
+  <meta property="og:description" content="Computer vision, LLM systems, and the infrastructure that runs them. MS CS at NC State, 2027.">
+  <meta property="og:image" content="https://alt-pranav.github.io/preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Pranav Bhagwat, ML and software engineer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pranav Bhagwat, ML and software engineer">
+  <meta name="twitter:description" content="Computer vision, LLM systems, and the infrastructure that runs them.">
+  <meta name="twitter:image" content="https://alt-pranav.github.io/preview.png">
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Pranav Bhagwat","url":"https://alt-pranav.github.io/",
+   "jobTitle":"ML and Software Engineer","alumniOf":["North Carolina State University","Pune Institute of Computer Technology"],
+   "sameAs":["https://www.linkedin.com/in/pranav-bhagwat-pb","https://github.com/alt-Pranav"]}
+  </script>
+
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='6' fill='none' stroke='%23E3A008' stroke-width='6'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' text-anchor='middle' fill='%232447D6'%3EPB%3C/text%3E%3C/svg%3E">
 
   <!-- Font -->
@@ -123,10 +147,26 @@
     }
     @keyframes lock { from { transform: scale(1.12); opacity: 0; } 60% { opacity: 1; } to { transform: scale(1); opacity: 1; } }
     @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-    .tagline { font-size: clamp(1.15rem, 2.6vw, 1.4rem); font-weight: 500; line-height: 1.35; max-width: 36ch; margin: 0 0 0.75rem; }
-    .status { color: var(--muted); margin: 0 0 1.5rem; }
+    .tagline { font-size: clamp(1.15rem, 2.6vw, 1.4rem); font-weight: 500; line-height: 1.35; max-width: 36ch; margin: 0 0 0.75rem; min-height: 2.7em; }
+    .status { color: var(--muted); margin: 0 0 1.25rem; }
 
-    /* ================= 5. BUTTONS ================= */
+    /* ================= 5. ROLE SWITCHER ================= */
+    .lens { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; margin: 0 0 1.5rem; }
+    .lens-label { color: var(--muted); font-size: 0.95rem; }
+    .lens-options { display: inline-flex; flex-wrap: wrap; gap: 0.25rem; padding: 0.25rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+    .lens-options button {
+      font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--muted); background: none;
+      border: 0; border-radius: 999px; padding: 0.3rem 0.8rem; cursor: pointer;
+    }
+    .lens-options button:hover { color: var(--text); }
+    .lens-options button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+    .swap { animation: fade 0.25s ease both; }
+    @media (max-width: 560px) {
+      .lens-options { display: grid; grid-template-columns: 1fr 1fr; width: 100%; border-radius: var(--radius-l); }
+      .lens-options button { border-radius: 10px; padding: 0.45rem 0.5rem; }
+    }
+
+    /* ================= 6. BUTTONS ================= */
     .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
     .btn {
       display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.55rem 1rem;
@@ -137,7 +177,7 @@
     .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
     .btn.primary:hover { filter: brightness(1.08); }
 
-    /* ================= 6. SECTION SHELL (shared by all sections) ================= */
+    /* ================= 7. SECTION SHELL (shared by all sections) ================= */
     .section { padding-top: 4rem; }
     .section-title {
       display: flex; align-items: center; gap: 0.6rem;
@@ -155,7 +195,7 @@
     .bullets li { margin: 0.35rem 0; max-width: 68ch; }
     .bullets li::marker { color: var(--muted); }
 
-    /* ================= 7. EXPERIENCE (timeline) ================= */
+    /* ================= 8. EXPERIENCE (timeline) ================= */
     .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
     .job { position: relative; padding: 0 0 2.25rem 1.5rem; }
     .job:last-child { padding-bottom: 0.25rem; }
@@ -164,7 +204,7 @@
       border-radius: 50%; background: var(--bg); border: 2px solid var(--accent);
     }
 
-    /* ================= 8. PROJECTS ================= */
+    /* ================= 9. PROJECTS ================= */
     .projects { display: grid; gap: 1.25rem; }
     .project { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); padding: 1.4rem 1.5rem; }
     .badge {
@@ -176,7 +216,7 @@
     .tag { font-size: 0.82rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.6rem; }
     .project-links { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 0.9rem; font-weight: 600; }
 
-    /* ================= 9. SKILLS ================= */
+    /* ================= 10. SKILLS ================= */
     .skills { display: grid; grid-template-columns: minmax(8rem, 11rem) 1fr; gap: 0.9rem 1.5rem; margin: 0; }
     .skills dt { font-weight: 700; }
     .skills dd { margin: 0; color: var(--muted); }
@@ -185,18 +225,18 @@
       .skills dd { margin-bottom: 0.9rem; }
     }
 
-    /* ================= 10. EDUCATION ================= */
+    /* ================= 11. EDUCATION ================= */
     .edu { margin-bottom: 1.75rem; }
     .edu:last-child { margin-bottom: 0; }
 
-    /* ================= 11. FOOTER ================= */
+    /* ================= 12. FOOTER ================= */
     .footer { padding: 4rem 0 2.5rem; color: var(--muted); font-size: 0.9rem; }
   </style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <!-- ===== TOP BAR (links auto-built from SECTIONS in JS) ===== -->
+  <!-- ===== TOP BAR (links auto-built from the active role's section order) ===== -->
   <header class="topbar">
     <div class="wrap">
       <a class="brand" href="#top" id="brand"></a>
@@ -205,7 +245,7 @@
     </div>
   </header>
 
-  <!-- ===== HERO (content set from PROFILE in JS) ===== -->
+  <!-- ===== HERO (content set from PROFILE and ROLES in JS) ===== -->
   <div id="top">
     <div class="banner" id="banner" aria-hidden="true"></div>
     <div class="wrap">
@@ -213,11 +253,12 @@
       <h1 class="name"><span class="bbox" id="name"></span></h1>
       <p class="tagline" id="tagline"></p>
       <p class="status" id="status"></p>
+      <div class="lens" id="lens"></div>
       <div class="actions" id="hero-actions"></div>
     </div>
   </div>
 
-  <!-- ===== SECTIONS (rendered from SECTIONS in JS) ===== -->
+  <!-- ===== SECTIONS (rendered in JS) ===== -->
   <main class="wrap" id="main"></main>
   <noscript><p class="wrap">This site needs JavaScript to display its content.</p></noscript>
 
@@ -226,40 +267,96 @@
 
   <script>
     /* ================= A. PROFILE (hero, links, files) =================
-       Put profile.jpg, banner.jpg, resume.pdf in the repo root.
+       Put profile.jpg, banner.jpg, preview.png and resume PDFs in the repo root.
        Missing photo shows initials; missing banner shows a gradient. */
     const PROFILE = {
       name: "Pranav Bhagwat",
       initials: "PB",
       bboxLabel: "person 0.99",   // tag above your name; "" hides it
-      tagline: "ML and software engineer. Computer vision, LLM systems, and the infrastructure that runs them.",
       status: "MS in Computer Science at NC State, graduating May 2027. Open to full-time roles.",
       photo: "profile.jpg",
       banner: "banner.jpg",
-      resume: "resume.pdf",
       email: "pranav221b@gmail.com",
       linkedin: "https://www.linkedin.com/in/pranav-bhagwat-pb",
       github: "https://github.com/alt-Pranav",
     };
 
-    /* ================= B. SECTIONS =================
-       Each section: id (URL anchor), title (nav + heading), data, render().
-       Strings may contain simple HTML like <strong>. */
-
-    /* ----- B1. ABOUT ----- */
-    const ABOUT = {
-      id: "about",
-      title: "About",
-      paragraphs: [
-        "I build machine learning systems end to end, from training vision and language models to shipping them as production services.",
-        "As lead software engineer at Thelios.ai, I owned a computer vision pipeline on AWS that analyzed over 100 hours of sports footage a week. Now I'm finishing an MS in Computer Science at NC State, teaching in its Generative AI course, and building with LLMs, graph retrieval, and agent tooling.",
-      ],
-      render() {
-        return `<div class="prose">${this.paragraphs.map(p => `<p>${p}</p>`).join("")}</div>`;
+    /* ================= B. ROLES (one per resume) =================
+       Deep link: yoursite/?for=<key>  e.g. ?for=ml
+       tagline: hero line for that role
+       resume: PDF for that role (falls back to ROLES.all.resume if missing)
+       order: section order (ids from C); remove an id to hide it for that role
+       skills: skill-group order (names from C4)
+       Content tagged with a role (roles: [...]) moves to the top in that view.
+       Text given as {all, ml, swe, ai} shows the matching version; missing keys use "all". */
+    const ROLES = {
+      all: {
+        label: "Everything",
+        tagline: "ML and software engineer. Computer vision, LLM systems, and the infrastructure that runs them.",
+        resume: "resume.pdf",
+        order: ["about", "experience", "projects", "skills", "education", "contact"],
+        skills: ["Languages", "ML and vision", "LLMs and agents", "Systems", "Cloud and DevOps", "Data", "Web and other"],
+      },
+      ml: {
+        label: "ML / CV",
+        tagline: "Machine learning engineer for computer vision: detection, tracking, pose, and video understanding, trained and shipped to production.",
+        resume: "resume-ml.pdf",
+        order: ["about", "experience", "projects", "skills", "education", "contact"],
+        skills: ["ML and vision", "Languages", "LLMs and agents", "Cloud and DevOps", "Data", "Systems", "Web and other"],
+      },
+      swe: {
+        label: "SWE / Data",
+        tagline: "Software engineer who builds and runs production services on AWS, from architecture through deployment and monitoring.",
+        resume: "resume-swe.pdf",
+        order: ["about", "experience", "skills", "projects", "education", "contact"],
+        skills: ["Languages", "Systems", "Cloud and DevOps", "Data", "Web and other", "ML and vision", "LLMs and agents"],
+      },
+      ai: {
+        label: "AI / LLM",
+        tagline: "AI engineer building LLM applications: graph retrieval, agent tooling, and policy guardrails.",
+        resume: "resume-ai.pdf",
+        order: ["about", "projects", "experience", "skills", "education", "contact"],
+        skills: ["LLMs and agents", "ML and vision", "Languages", "Web and other", "Data", "Cloud and DevOps", "Systems"],
       },
     };
 
-    /* ----- B2. EXPERIENCE (newest first) ----- */
+    /* ================= ANALYTICS (optional) =================
+       Sign up at goatcounter.com, then set your code (e.g. "pranav" for pranav.goatcounter.com).
+       Logs: landing view, role switches, resume downloads. "" = off. */
+    const ANALYTICS = { goatcounter: "" };
+
+    /* ================= C. SECTIONS =================
+       Each section: id (anchor), title (nav + heading), data, render().
+       Strings may contain simple HTML like <strong>. */
+
+    /* ----- C1. ABOUT ----- */
+    const ABOUT = {
+      id: "about",
+      title: "About",
+      paragraphs: {
+        all: [
+          "I build machine learning systems end to end, from training vision and language models to shipping them as production services.",
+          "As lead software engineer at Thelios.ai, I owned a computer vision pipeline on AWS that analyzed over 100 hours of sports footage a week. Now I'm finishing an MS in Computer Science at NC State, teaching in its Generative AI course, and building with LLMs, graph retrieval, and agent tooling.",
+        ],
+        ml: [
+          "I train computer vision models and ship them. At Thelios.ai I led engineering on a sports video system covering detection, tracking, segmentation, pose estimation, and temporal action localization, built in PyTorch and running on AWS.",
+          "I'm now finishing an MS in Computer Science at NC State, where I also TA the Generative AI course.",
+        ],
+        swe: [
+          "I build and operate production software. At Thelios.ai I architected and owned a microservice on AWS (EC2, ECS, ECR) that processed over 100 hours of video a week, from deployment through monitoring.",
+          "I'm finishing an MS in Computer Science at NC State, with coursework in software engineering, operating systems, and parallel systems.",
+        ],
+        ai: [
+          "I build LLM applications. Recently: a GraphRAG system that surfaces contradicting claims across social media sources, and Sentinel AI, a guardrail that checks coding-agent actions against compliance policies, which won SolHacks 2026.",
+          "I TA NC State's Generative AI course. Before grad school I led engineering at Thelios.ai, shipping vision and vision-language models to production.",
+        ],
+      },
+      render() {
+        return `<div class="prose">${pick(this.paragraphs).map(p => `<p>${p}</p>`).join("")}</div>`;
+      },
+    };
+
+    /* ----- C2. EXPERIENCE (newest first; stays chronological in every view) ----- */
     const EXPERIENCE = {
       id: "experience",
       title: "Experience",
@@ -269,9 +366,12 @@
           org: "North Carolina State University",
           dates: "Jan 2026 – May 2026",
           bullets: [
-            "Built and tested end-to-end Python assignments in PyTorch and HuggingFace, with starter scaffolding, reference solutions, and automated test harnesses for deterministic, reproducible grading.",
-            "Packaged reproducible GPU environments (dependency pinning, Colab and cluster setup) and debugged student issues across CUDA errors, dependency conflicts, and OOM failures.",
-            "Wrote technical documentation and specs that turned research-level material into clear, incrementally testable engineering tasks.",
+            { roles: ["ml", "ai"], text: {
+              all: "Built and tested end-to-end Python assignments in PyTorch and HuggingFace, with starter scaffolding, reference solutions, and automated test harnesses for deterministic, reproducible grading.",
+              ai: "Built end-to-end generative AI assignments in PyTorch and HuggingFace Transformers, with reference solutions and automated test harnesses for deterministic, reproducible grading.",
+            } },
+            { roles: ["ml", "swe"], text: "Packaged reproducible GPU environments (dependency pinning, Colab and cluster setup) and debugged student issues across CUDA errors, dependency conflicts, and OOM failures." },
+            { roles: ["ai"], text: "Wrote technical documentation and specs that turned research-level material into clear, incrementally testable engineering tasks." },
           ],
         },
         {
@@ -280,10 +380,17 @@
           dates: "Aug 2023 – Aug 2025",
           bullets: [
             // TODO: swap "accuracy" for the real metric (mAP / F1) if that's what you measured
-            "Architected and owned a production computer vision microservice on AWS (EC2, ECS, ECR) processing <strong>100+ hours of footage weekly</strong>, from model training through deployment and monitoring. Reached 95% accuracy in player detection and <strong>cut manual analysis time by 80%</strong>.",
-            "Engineered temporal action localization models with CNNs, Vision Transformers, and vision-language models in PyTorch, reaching 85% accuracy on complex player behaviors.",
-            "Implemented custom graph-based heuristic algorithms for team analysis.",
-            "Expanded coverage across multimodal understanding, detection, segmentation, tracking, and pose estimation, increasing the player behaviors analyzed per play.",
+            { roles: ["ml", "swe"], text: {
+              all: "Architected and owned a production computer vision microservice on AWS (EC2, ECS, ECR) processing <strong>100+ hours of footage weekly</strong>, from model training through deployment and monitoring. Reached 95% accuracy in player detection and <strong>cut manual analysis time by 80%</strong>.",
+              ml: "Trained the player detection models behind a production CV service and took them through deployment and monitoring, reaching <strong>95% detection accuracy</strong> and <strong>cutting manual analysis time by 80%</strong> across 100+ hours of footage a week.",
+              swe: "Architected and owned a production microservice on AWS (EC2, ECS, ECR) that processed <strong>100+ hours of video weekly</strong>, handling deployment and monitoring end to end and <strong>cutting manual analysis time by 80%</strong>.",
+            } },
+            { roles: ["ml", "ai"], text: {
+              all: "Engineered temporal action localization models with CNNs, Vision Transformers, and vision-language models in PyTorch, reaching 85% accuracy on complex player behaviors.",
+              ai: "Applied vision-language models, alongside CNNs and Vision Transformers, to temporal action localization in PyTorch, reaching 85% accuracy on complex player behaviors.",
+            } },
+            { roles: ["ml"], text: "Expanded coverage across multimodal understanding, detection, segmentation, tracking, and pose estimation, increasing the player behaviors analyzed per play." },
+            { roles: ["swe"], text: "Implemented custom graph-based heuristic algorithms for team analysis." },
           ],
         },
         {
@@ -291,8 +398,12 @@
           org: "BMC Software",
           dates: "Jan 2022 – Jun 2022",
           bullets: [
-            "Built a Git-tracked pipeline: NLP feature extraction (NLTK), an ML anomaly classifier (scikit-learn), and iterative evaluation, reaching <strong>86% accuracy</strong> on enterprise network config data.",
-            "Led a 4-intern team through the full SDLC over a 4-month project: requirements, implementation, testing, and evaluation.",
+            { roles: ["ml", "swe", "ai"], text: {
+              all: "Built a Git-tracked pipeline: NLP feature extraction (NLTK), an ML anomaly classifier (scikit-learn), and iterative evaluation, reaching <strong>86% accuracy</strong> on enterprise network config data.",
+              ml: "Built an ML anomaly classifier (scikit-learn) on NLP features extracted with NLTK, reaching <strong>86% accuracy</strong> on enterprise network config data.",
+              swe: "Built a Git-tracked, end-to-end anomaly detection pipeline for enterprise network config data: feature extraction, classification, and iterative evaluation, reaching <strong>86% accuracy</strong>.",
+            } },
+            { roles: ["swe"], text: "Led a 4-intern team through the full SDLC over a 4-month project: requirements, implementation, testing, and evaluation." },
           ],
         },
       ],
@@ -304,12 +415,12 @@
               <span class="entry-date">${j.dates}</span>
             </div>
             <p class="entry-sub">${j.org}</p>
-            <ul class="bullets">${j.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
+            <ul class="bullets">${byRole(j.bullets).map(b => `<li>${pick(b.text)}</li>`).join("")}</ul>
           </li>`).join("")}</ol>`;
       },
     };
 
-    /* ----- B3. PROJECTS (links with empty url are hidden) ----- */
+    /* ----- C3. PROJECTS (tagged projects move up; links with empty url are hidden) ----- */
     const PROJECTS = {
       id: "projects",
       title: "Projects",
@@ -318,13 +429,18 @@
           name: "OmniView: Instagram event GraphRAG",
           dates: "Jul 2026 – present",
           badge: "",
+          roles: ["ai", "swe"],
           tags: ["Neo4j", "GraphRAG", "Python", "Whisper", "Groq", "Streamlit"],
           bullets: [
-            "End-to-end GraphRAG pipeline that scrapes Instagram posts and Reels, transcribes audio with Whisper, and upserts structured entities into a Neo4j Aura knowledge graph.",
-            "Hybrid retrieval that combines vector search over sentence-transformer embeddings with local graph traversal to surface conflicting claims across sources in a single query.",
-            "Multi-perspective LLM synthesis that flags narrative gaps, opposing accounts, and source uncertainty, with inline citations linking every claim to its source post.",
+            { roles: ["swe"], text: {
+              all: "End-to-end GraphRAG pipeline that scrapes Instagram posts and Reels, transcribes audio with Whisper, and upserts structured entities into a Neo4j Aura knowledge graph.",
+              swe: "End-to-end ingestion pipeline that scrapes Instagram posts and Reels, transcribes audio with Whisper, and upserts structured entities into a Neo4j Aura knowledge graph.",
+            } },
+            { roles: ["ai", "ml"], text: "Hybrid retrieval that combines vector search over sentence-transformer embeddings with local graph traversal to surface conflicting claims across sources in a single query." },
+            { roles: ["ai"], text: "Multi-perspective LLM synthesis that flags narrative gaps, opposing accounts, and source uncertainty, with inline citations linking every claim to its source post." },
           ],
           links: [
+            { label: "Details", url: "" },   // README or write-up page
             { label: "Code", url: "" },
             { label: "Demo", url: "" },
           ],
@@ -333,20 +449,22 @@
           name: "Sentinel AI",
           dates: "Mar 2026",
           badge: "SolHacks 2026 winner",
+          roles: ["ai", "swe"],
           tags: ["Python", "TypeScript", "FastAPI", "Gemini", "Solana"],
           bullets: [
-            "VS Code extension that intercepts GitHub Copilot agent file actions after inference and checks them against user-defined compliance policies before any code runs, aimed at healthcare and fintech.",
-            "FastAPI verifier with a hybrid policy engine (regex plus Gemini 2.5 Flash), hot-reloadable Markdown policies, and deterministic, traceable risk verdicts with human-in-the-loop decisions.",
-            "Every governance decision logged immutably on Solana via the SPL Memo Program, with a Chart.js dashboard for audit trails.",
+            { roles: ["ai"], text: "VS Code extension that intercepts GitHub Copilot agent file actions after inference and checks them against user-defined compliance policies before any code runs, aimed at healthcare and fintech." },
+            { roles: ["swe", "ai"], text: "FastAPI verifier with a hybrid policy engine (regex plus Gemini 2.5 Flash), hot-reloadable Markdown policies, and deterministic, traceable risk verdicts with human-in-the-loop decisions." },
+            { roles: ["swe"], text: "Every governance decision logged immutably on Solana via the SPL Memo Program, with a Chart.js dashboard for audit trails." },
           ],
           links: [
+            { label: "Details", url: "" },
             { label: "Code", url: "" },
             { label: "Devpost", url: "" },
           ],
         },
       ],
       render() {
-        return `<div class="projects">${this.items.map(p => {
+        return `<div class="projects">${byRole(this.items).map(p => {
           const links = p.links.filter(l => l.url)
             .map(l => `<a href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`).join("");
           return `
@@ -356,32 +474,33 @@
               <span class="entry-date">${p.dates}</span>
             </div>
             <ul class="tags">${p.tags.map(t => `<li class="tag">${t}</li>`).join("")}</ul>
-            <ul class="bullets">${p.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
+            <ul class="bullets">${byRole(p.bullets).map(b => `<li>${pick(b.text)}</li>`).join("")}</ul>
             ${links ? `<div class="project-links">${links}</div>` : ""}
           </article>`;
         }).join("")}</div>`;
       },
     };
 
-    /* ----- B4. SKILLS ----- */
+    /* ----- C4. SKILLS (group order per role is set in ROLES) ----- */
     const SKILLS = {
       id: "skills",
       title: "Skills",
-      groups: [
-        { group: "Languages", items: ["Python", "C++", "Java", "SQL", "Bash", "Dart"] },
-        { group: "ML and vision", items: ["PyTorch", "TensorFlow", "HuggingFace Transformers", "MMAction", "OpenCV", "Weights & Biases", "Matplotlib"] },
-        { group: "LLMs and agents", items: ["LLM applications", "RAG and GraphRAG", "Coding agents", "Gemini", "Groq"] },
-        { group: "Systems", items: ["Distributed systems", "Microservices", "REST APIs", "OOP design patterns", "ROS 2"] },
-        { group: "Cloud and DevOps", items: ["AWS (EC2, ECS, ECR)", "Docker", "Apache Airflow", "Git", "GitHub Actions", "CI/CD"] },
-        { group: "Data", items: ["MongoDB", "Neo4j"] },
-        { group: "Web and other", items: ["Flutter", "Flask", "FastAPI", "Streamlit", "LaTeX"] },
-      ],
+      groups: {
+        "Languages": ["Python", "C++", "Java", "SQL", "Bash", "Dart"],
+        "ML and vision": ["PyTorch", "TensorFlow", "HuggingFace Transformers", "MMAction", "OpenCV", "Weights & Biases", "Matplotlib"],
+        "LLMs and agents": ["LLM applications", "RAG and GraphRAG", "Coding agents", "Gemini", "Groq"],
+        "Systems": ["Distributed systems", "Microservices", "REST APIs", "OOP design patterns", "ROS 2"],
+        "Cloud and DevOps": ["AWS (EC2, ECS, ECR)", "Docker", "Apache Airflow", "Git", "GitHub Actions", "CI/CD"],
+        "Data": ["MongoDB", "Neo4j"],
+        "Web and other": ["Flutter", "Flask", "FastAPI", "Streamlit", "LaTeX"],
+      },
       render() {
-        return `<dl class="skills">${this.groups.map(g => `<dt>${g.group}</dt><dd>${g.items.join(", ")}</dd>`).join("")}</dl>`;
+        const order = role().skills.filter(g => this.groups[g]);
+        return `<dl class="skills">${order.map(g => `<dt>${g}</dt><dd>${this.groups[g].join(", ")}</dd>`).join("")}</dl>`;
       },
     };
 
-    /* ----- B5. EDUCATION ----- */
+    /* ----- C5. EDUCATION ----- */
     const EDUCATION = {
       id: "education",
       title: "Education",
@@ -407,12 +526,12 @@
               <span class="entry-date">${e.dates}</span>
             </div>
             <p class="entry-sub">${e.school}</p>
-            <p>${e.detail}</p>
+            <p>${pick(e.detail)}</p>
           </div>`).join("");
       },
     };
 
-    /* ----- B6. CONTACT ----- */
+    /* ----- C6. CONTACT ----- */
     const CONTACT = {
       id: "contact",
       title: "Contact",
@@ -422,12 +541,21 @@
       },
     };
 
-    /* ================= C. SECTION ORDER =================
-       Reorder, remove, or add sections here. Nav updates automatically. */
-    const SECTIONS = [ABOUT, EXPERIENCE, PROJECTS, SKILLS, EDUCATION, CONTACT];
+    /* Register sections here when you add a new one */
+    const SECTIONS = { about: ABOUT, experience: EXPERIENCE, projects: PROJECTS, skills: SKILLS, education: EDUCATION, contact: CONTACT };
 
-    /* ================= D. RENDERING (no edits needed below) ================= */
+    /* ================= D. ENGINE (no edits needed below) ================= */
     const $ = id => document.getElementById(id);
+    let ROLE = (() => { const r = new URLSearchParams(location.search).get("for"); return ROLES[r] ? r : "all"; })();
+    let resumeHref = ROLES.all.resume;
+    const role = () => ROLES[ROLE];
+
+    // Role-specific text: string, or {all, ml, ...}
+    const pick = v => (v && typeof v === "object" && !Array.isArray(v)) ? (v[ROLE] ?? v.all) : v;
+    // Tagged-for-this-role first; stable otherwise
+    const byRole = list => ROLE === "all" ? list : [...list].sort((a, b) => rel(b) - rel(a));
+    const rel = x => (x.roles || []).includes(ROLE) ? 1 : 0;
+
     const ICON = {
       download: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>`,
       sun: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`,
@@ -437,47 +565,85 @@
     // Resume + email + LinkedIn + GitHub buttons; skips empty fields
     function contactButtons(withResume) {
       const P = PROFILE, out = [];
-      if (withResume && P.resume) out.push(`<a class="btn primary" href="${P.resume}" download>${ICON.download}Download resume</a>`);
+      if (withResume) out.push(`<a class="btn primary" id="resume-btn" href="${resumeHref}" download>${ICON.download}Download resume</a>`);
       if (P.email) out.push(`<a class="btn" href="mailto:${P.email}">Email</a>`);
       if (P.linkedin) out.push(`<a class="btn" href="${P.linkedin}" target="_blank" rel="noopener">LinkedIn</a>`);
       if (P.github) out.push(`<a class="btn" href="${P.github}" target="_blank" rel="noopener">GitHub</a>`);
       return out.join("");
     }
 
-    // Hero
+    // Use the role's PDF if it exists, else the default
+    async function resolveResume() {
+      const want = role().resume, fallback = ROLES.all.resume;
+      resumeHref = want;
+      if (want !== fallback) {
+        try { const r = await fetch(want, { method: "HEAD" }); if (!r.ok) resumeHref = fallback; }
+        catch (e) { resumeHref = fallback; }
+      }
+      const btn = $("resume-btn");
+      if (btn) btn.href = resumeHref;
+    }
+
+    // Static hero parts
     function renderHero() {
       const P = PROFILE;
       $("brand").textContent = P.name;
       $("name").textContent = P.name;
       $("name").dataset.label = P.bboxLabel;
-      $("tagline").innerHTML = P.tagline;
       $("status").innerHTML = P.status;
       $("hero-actions").innerHTML = contactButtons(true);
+      $("resume-btn").addEventListener("click", () => track(`resume-${ROLE}`, `Resume download (${role().label})`, true));
       if (P.banner) $("banner").style.setProperty("--banner-img", `url("${P.banner}")`);
       $("avatar").innerHTML = `<span>${P.initials}</span>` +
         (P.photo ? `<img src="${P.photo}" alt="${P.name}" onerror="this.remove()">` : "");
     }
 
-    // Sections + nav
-    function renderSections() {
-      $("main").innerHTML = SECTIONS.map(s => `
+    // Role switcher buttons
+    function renderLens() {
+      const buttons = Object.entries(ROLES).map(([k, r]) =>
+        `<button type="button" data-role="${k}" aria-pressed="${k === ROLE}">${r.label}</button>`).join("");
+      $("lens").innerHTML = `<span class="lens-label" id="lens-label">Tailored for</span>
+        <div class="lens-options" role="group" aria-labelledby="lens-label">${buttons}</div>`;
+      $("lens").querySelectorAll("button").forEach(b => b.addEventListener("click", () => setRole(b.dataset.role)));
+    }
+
+    // Role-dependent parts: tagline, sections, nav
+    function renderRoleContent() {
+      $("tagline").innerHTML = role().tagline;
+      const list = role().order.map(id => SECTIONS[id]).filter(Boolean);
+      $("main").innerHTML = list.map(s => `
         <section class="section" id="${s.id}" aria-labelledby="${s.id}-h">
           <h2 class="section-title" id="${s.id}-h">${s.title}</h2>
           ${s.render()}
         </section>`).join("");
-      $("nav").innerHTML = SECTIONS.map(s => `<a href="#${s.id}">${s.title}</a>`).join("");
+      $("nav").innerHTML = list.map(s => `<a href="#${s.id}">${s.title}</a>`).join("");
+      initScrollSpy(list);
+    }
+
+    // Switch role: URL, content, analytics
+    function setRole(next) {
+      if (next === ROLE || !ROLES[next]) return;
+      ROLE = next;
+      history.replaceState(null, "", ROLE === "all" ? location.pathname : `?for=${ROLE}`);
+      $("lens").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.role === ROLE));
+      renderRoleContent();
+      resolveResume();
+      ["tagline", "main"].forEach(id => { const el = $(id); el.classList.remove("swap"); void el.offsetWidth; el.classList.add("swap"); });
+      track(`switch-${ROLE}`, `Switched to ${role().label}`, true);
     }
 
     // Highlight nav link for the section in view
-    function initScrollSpy() {
+    let spy;
+    function initScrollSpy(list) {
+      if (spy) spy.disconnect();
       const links = [...$("nav").querySelectorAll("a")];
-      const obs = new IntersectionObserver(entries => {
+      spy = new IntersectionObserver(entries => {
         entries.forEach(e => {
           if (!e.isIntersecting) return;
           links.forEach(a => a.classList.toggle("active", a.hash === "#" + e.target.id));
         });
       }, { rootMargin: "-40% 0px -55% 0px" });
-      SECTIONS.forEach(s => obs.observe($(s.id)));
+      list.forEach(s => spy.observe($(s.id)));
     }
 
     // Light/dark toggle; remembers choice
@@ -499,16 +665,33 @@
       paint();
     }
 
+    // GoatCounter: manual pageview (records landing role) + events
+    function track(path, title, event) {
+      if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path, title, event });
+    }
+    function initAnalytics() {
+      if (!ANALYTICS.goatcounter) return;
+      window.goatcounter = { no_onload: true };
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = "https://gc.zgo.at/count.js";
+      s.dataset.goatcounter = `https://${ANALYTICS.goatcounter}.goatcounter.com/count`;
+      s.onload = () => track(ROLE === "all" ? "/" : `/?for=${ROLE}`, `${document.title} (${role().label})`, false);
+      document.head.appendChild(s);
+    }
+
     // Footer
     function renderFooter() {
       $("footer").textContent = `© ${new Date().getFullYear()} ${PROFILE.name}`;
     }
 
     renderHero();
-    renderSections();
+    renderLens();
+    renderRoleContent();
+    resolveResume();
     renderFooter();
     initTheme();
-    initScrollSpy();
+    initAnalytics();
   </script>
 </body>
 </html>
