@@ -13,14 +13,14 @@
   <meta property="og:site_name" content="Pranav Bhagwat">
   <meta property="og:title" content="Pranav Bhagwat, ML and software engineer">
   <meta property="og:description" content="Computer vision, LLM systems, and the infrastructure that runs them. MS CS at NC State, 2027.">
-  <meta property="og:image" content="https://alt-pranav.github.io/preview.png">
+  <meta property="og:image" content="https://alt-pranav.github.io/images/preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Pranav Bhagwat, ML and software engineer">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pranav Bhagwat, ML and software engineer">
   <meta name="twitter:description" content="Computer vision, LLM systems, and the infrastructure that runs them.">
-  <meta name="twitter:image" content="https://alt-pranav.github.io/preview.png">
+  <meta name="twitter:image" content="https://alt-pranav.github.io/images/preview.png">
 
   <!-- Structured data for search engines -->
   <script type="application/ld+json">
@@ -44,7 +44,7 @@
   <style>
     /* ================= 1. THEME TOKENS (edit colors/fonts here) ================= */
     :root {
-      /* Palette sampled from banner.jpg: cloud slate, sun gold, ember orange */
+      /* Palette sampled from images/banner.jpg: cloud slate, sun gold, ember orange */
       --bg: #EDEFF1;          /* pale sky */
       --surface: #FFFFFF;
       --text: #1F2630;        /* storm-cloud slate */
@@ -268,15 +268,18 @@
 
   <script>
     /* ================= A. PROFILE (hero, links, files) =================
-       Put profile.jpg, banner.jpg, preview.png and resume PDFs in the repo root.
+       Files: ./images/ (banner.jpg, profile.jpg, preview.png), ./resumes/<role>_resume.pdf
        Missing photo shows initials; missing banner shows a gradient. */
     const PROFILE = {
       name: "Pranav Bhagwat",
       initials: "PB",
       bboxLabel: "person 0.99",   // tag above your name; "" hides it
       status: "MS in Computer Science at NC State, graduating May 2027. Open to full-time roles.",
-      photo: "profile.jpg",
-      banner: "banner.jpg",
+      photo: "./images/profile.jpg",
+      banner: "./images/banner.jpg",
+      resume: role => `./resumes/${role}_resume.pdf`,   // e.g. ./resumes/ml_resume.pdf
+      // Saved filename, e.g. Pranav_Bhagwat_Resume_ML.pdf ("all" gets no suffix)
+      resumeName: role => `Pranav_Bhagwat_Resume${role === "all" ? "" : "_" + role.toUpperCase()}.pdf`,
       // Encoded so scrapers can't read it. To change: run encodeEmail("you@example.com") in the browser console on your site, paste the result here.
       emailCode: "38-3a-2y-1h-37-34-2w-38-32-1z-2x-1k-1l-1l-3h-2w-39-2w-3d-3b",
       linkedin: "https://www.linkedin.com/in/pranav-bhagwat-pb",
@@ -286,7 +289,7 @@
     /* ================= B. ROLES (one per resume) =================
        Deep link: yoursite/?for=<key>  e.g. ?for=ml
        tagline: hero line for that role
-       resume: PDF for that role (falls back to ROLES.all.resume if missing)
+       Resume: ./resumes/<key>_resume.pdf (falls back to all_resume.pdf if missing)
        order: section order (ids from C); remove an id to hide it for that role
        skills: skill-group order (names from C4)
        Content tagged with a role (roles: [...]) moves to the top in that view.
@@ -295,28 +298,24 @@
       all: {
         label: "Everything",
         tagline: "ML and software engineer. Computer vision, LLM systems, and the infrastructure that runs them.",
-        resume: "resume.pdf",
         order: ["about", "experience", "projects", "skills", "education", "contact"],
         skills: ["Languages", "ML and vision", "LLMs and agents", "Systems", "Cloud and DevOps", "Data", "Web and other"],
       },
       ml: {
         label: "ML / CV",
         tagline: "Machine learning engineer for computer vision: detection, tracking, pose, and video understanding, trained and shipped to production.",
-        resume: "resume-ml.pdf",
         order: ["about", "experience", "projects", "skills", "education", "contact"],
         skills: ["ML and vision", "Languages", "LLMs and agents", "Cloud and DevOps", "Data", "Systems", "Web and other"],
       },
       swe: {
         label: "SWE / Data",
         tagline: "Software engineer who builds and runs production services on AWS, from architecture through deployment and monitoring.",
-        resume: "resume-swe.pdf",
         order: ["about", "experience", "skills", "projects", "education", "contact"],
         skills: ["Languages", "Systems", "Cloud and DevOps", "Data", "Web and other", "ML and vision", "LLMs and agents"],
       },
       ai: {
         label: "AI / LLM",
         tagline: "AI engineer building LLM applications: graph retrieval, agent tooling, and policy guardrails.",
-        resume: "resume-ai.pdf",
         order: ["about", "projects", "experience", "skills", "education", "contact"],
         skills: ["LLMs and agents", "ML and vision", "Languages", "Web and other", "Data", "Cloud and DevOps", "Systems"],
       },
@@ -549,7 +548,7 @@
     /* ================= D. ENGINE (no edits needed below) ================= */
     const $ = id => document.getElementById(id);
     let ROLE = (() => { const r = new URLSearchParams(location.search).get("for"); return ROLES[r] ? r : "all"; })();
-    let resumeHref = ROLES.all.resume;
+    let resumeHref = PROFILE.resume("all"), resumeName = PROFILE.resumeName("all");
     const role = () => ROLES[ROLE];
 
     // Role-specific text: string, or {all, ml, ...}
@@ -593,7 +592,7 @@
     // Resume + email + LinkedIn + GitHub buttons; skips empty fields
     function contactButtons(withResume) {
       const P = PROFILE, out = [];
-      if (withResume) out.push(`<a class="btn primary" id="resume-btn" href="${resumeHref}" download>${ICON.download}Download resume</a>`);
+      if (withResume) out.push(`<a class="btn primary" id="resume-btn" href="${resumeHref}" download="${resumeName}">${ICON.download}Download resume</a>`);
       if (P.emailCode) out.push(
         `<a class="btn" href="#contact" rel="nofollow" data-email="open">Email</a>`,
         `<button class="btn" type="button" data-email="copy"><span aria-live="polite">Copy email</span></button>`);
@@ -604,14 +603,16 @@
 
     // Use the role's PDF if it exists, else the default
     async function resolveResume() {
-      const want = role().resume, fallback = ROLES.all.resume;
-      resumeHref = want;
+      const want = PROFILE.resume(ROLE), fallback = PROFILE.resume("all");
+      let used = ROLE;
       if (want !== fallback) {
-        try { const r = await fetch(want, { method: "HEAD" }); if (!r.ok) resumeHref = fallback; }
-        catch (e) { resumeHref = fallback; }
+        try { const r = await fetch(want, { method: "HEAD" }); if (!r.ok) used = "all"; }
+        catch (e) { used = "all"; }
       }
+      resumeHref = PROFILE.resume(used);
+      resumeName = PROFILE.resumeName(used);   // name matches the file actually served
       const btn = $("resume-btn");
-      if (btn) btn.href = resumeHref;
+      if (btn) { btn.href = resumeHref; btn.download = resumeName; }
     }
 
     // Static hero parts
