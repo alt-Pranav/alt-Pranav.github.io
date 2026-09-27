@@ -29,7 +29,7 @@
    "sameAs":["https://www.linkedin.com/in/pranav-bhagwat-pb","https://github.com/alt-Pranav"]}
   </script>
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='6' fill='none' stroke='%23E3A008' stroke-width='6'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' text-anchor='middle' fill='%232447D6'%3EPB%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='6' fill='none' stroke='%23E6A82A' stroke-width='6'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' text-anchor='middle' fill='%23B5531A'%3EPB%3C/text%3E%3C/svg%3E">
 
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,16 +44,17 @@
   <style>
     /* ================= 1. THEME TOKENS (edit colors/fonts here) ================= */
     :root {
-      --bg: #F5F7FA;
+      /* Palette sampled from banner.jpg: cloud slate, sun gold, ember orange */
+      --bg: #EDEFF1;          /* pale sky */
       --surface: #FFFFFF;
-      --text: #16203A;
-      --muted: #566079;
-      --line: #DCE1EA;
-      --accent: #2447D6;      /* links, buttons */
-      --box: #E3A008;         /* bounding-box motif */
-      --box-ink: #16203A;     /* text on --box */
-      --banner-a: #1B2E6B;    /* banner fallback gradient */
-      --banner-b: #2447D6;
+      --text: #1F2630;        /* storm-cloud slate */
+      --muted: #59626E;
+      --line: #D4D8DD;
+      --accent: #B5531A;      /* ember orange: links, buttons */
+      --box: #E6A82A;         /* sun gold: bounding-box motif */
+      --box-ink: #1F2630;     /* text on --box */
+      --banner-a: #313A49;    /* banner fallback gradient */
+      --banner-b: #814511;
       --radius-s: 4px;
       --radius-l: 14px;
       --max: 760px;           /* content width */
@@ -62,14 +63,14 @@
     /* Dark palette: system preference */
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --bg: #0E1424; --surface: #151D31; --text: #E4E9F3; --muted: #9AA5BD; --line: #26304A;
-        --accent: #8FA6FF; --box: #F2B53A; --box-ink: #0E1424; --banner-a: #0A1330; --banner-b: #1E3290;
+        --bg: #14181E; --surface: #1C222B; --text: #E8E6E1; --muted: #A3A8B0; --line: #2C3440;
+        --accent: #F29A4A; --box: #F2BE4A; --box-ink: #14181E; --banner-a: #1B1B19; --banner-b: #4A2A12;
       }
     }
     /* Dark palette: manual toggle */
     :root[data-theme="dark"] {
-      --bg: #0E1424; --surface: #151D31; --text: #E4E9F3; --muted: #9AA5BD; --line: #26304A;
-      --accent: #8FA6FF; --box: #F2B53A; --box-ink: #0E1424; --banner-a: #0A1330; --banner-b: #1E3290;
+      --bg: #14181E; --surface: #1C222B; --text: #E8E6E1; --muted: #A3A8B0; --line: #2C3440;
+      --accent: #F29A4A; --box: #F2BE4A; --box-ink: #14181E; --banner-a: #1B1B19; --banner-b: #4A2A12;
     }
 
     /* ================= 2. BASE ================= */
